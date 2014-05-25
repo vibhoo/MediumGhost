@@ -1,0 +1,84 @@
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h2 class="modal-title" id="myModalLabel"><%= @user.first_name %></h2>
+      </div>
+      <div class="modal-body">
+        <%= @user.bio %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="painel">
+
+</div>
+
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+
+    <div class="painel-float">
+
+      <%= link_to "#", class: "has-tooltip", title: "Ver perfil", data: {toggle: "modal", target: "#modal", placement: "right"} do %>
+          <%= image_tag @user.avatar.url(:thumb), size: "100x100", class: "avatar img-circle has-tooltip" %>
+      <% end %>
+
+      <div class="descricao">
+        <span><b><%= @user.first_name %></b></span><br/>
+				<span class="bio"><%= @user.bio[0..400] %><br/>
+                  <%= link_to " ...", "#", class: "big-dots", data: {toggle: "modal", target: "#modal"} %></span>
+
+      </div>
+
+    </div>
+
+
+    <ul class="bloco-posts">
+
+      <% @posts.reverse_each do |post|  %>
+
+          <li class="post">
+
+            <div class="item">
+
+              <h2><%= link_to post.title, post %></h2>
+
+              <div class="resumo">
+                <%= raw post.content[0..340]%> ...
+              </div>
+
+            </div>
+
+            <div class="meta">
+              <%= link_to time_ago_in_words(post.created_at).capitalize + " back", post %>
+
+              <% if user_signed_in? %>
+                  <% if current_user.id == post.user.id %>
+		            <span class="admin">
+		              <%= link_to "Edit", edit_post_path(post) %>
+                      <%= link_to "delete", post, :method => :delete, data: { confirm: "Are you sure you want to delete #{post.title}?"} %>
+		            </span>
+                  <% end %>
+              <% end %>
+            </div>
+
+          </li>
+
+      <% end %>
+
+    </ul>
+
+
+    <%= render "posts/return_button" %>
+
+
+  </div>
+</div>
+

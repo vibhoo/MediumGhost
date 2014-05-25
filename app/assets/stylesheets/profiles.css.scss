@@ -1,0 +1,49 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.painel{
+	height:300px !important;
+}
+
+.painel-float{
+	height: 300px !important;
+  padding: 45px 0 0 !important;
+}
+
+.post h2 {
+    margin: 0 0 12px !important;
+    width: 100% !important;
+}
+
+.post .resumo {
+    width: 100% !important;
+}
+
+.img-circle {
+    border: 3px solid #FFFFFF !important;
+}
+
+.painel-float .descricao{
+  margin: 10px 0 0 !important;
+  	& b{
+  		font-weight: 900 !important;
+  	}
+}
+
+.bio{
+  float: left;    
+  font-size: 12px;
+  line-height: 1.4em;
+  margin: 6px 0 0;
+}
+
+.big-dots {
+  font-size: 70px;
+  line-height: 0;
+  position: relative;
+  top: -6px;
+}
+
+@import 'posts'

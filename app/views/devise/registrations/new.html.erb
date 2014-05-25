@@ -1,0 +1,37 @@
+
+<div class="centralize col-md-8 col-md-offset-2">
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "well well-lg", method: :post, multipart: true }, defaults: {input_html: {class: "form-control"}, wrapper_html: {class: "form-group"}} ) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="page-header"><h2>Register Here</h2></div>
+
+      <%= f.input :first_name, label: "FirstName" %>
+
+      <%= f.input :last_name, label: "LastName" %>
+
+      <%= f.input :username, label: "Username" %>
+
+      <%= f.input :bio, as: :text, label: "Bio", input_html: {rows: 10} %>
+
+      <%= f.input :avatar, as: :file, label: "Avatar", input_html: {class: ""} %>
+
+      <%= f.input :email, as: :email, label: "Email" %>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Awaiting confirmation email: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <%= f.input :password, as: :password, input_html: {autocomplete: "off"}, label: "password" %>
+
+      <%= f.input :password_confirmation, as: :password, input_html: {autocomplete: "off"}, label: "Confirm Password", hint: "Repeat Your Password." %>
+
+      <div class="form-group">
+        <%= f.submit "Register", class: "btn btn-success btn-lg pull-right" %>
+      </div>
+
+  <% end %>
+
+</div>
+
+<%= render "posts/return_button" %>

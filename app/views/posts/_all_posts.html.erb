@@ -1,0 +1,39 @@
+
+<ul class="bloco-posts">
+
+    <% @posts.reverse_each do |post|  %>
+
+    <li class="post">
+
+        <div class="item">
+
+            <%= link_to post.user.username do %>
+            <%= image_tag post.user.avatar.url(:thumb), size: "55x55", class: "avatar img-circle has-tooltip", data:{placement: "right"}, title: post.user.first_name %>
+            <% end %>
+
+            <h2><%= link_to post.title, post %></h2>
+
+            <div class="resumo">
+                <%= raw post.content[0..140]%> ...
+            </div>
+
+        </div>
+
+        <div class="meta">
+            <%= link_to time_ago_in_words(post.created_at).capitalize + " back", post %>
+
+            <% if user_signed_in? %>
+            <% if current_user.id == post.user.id %>
+            <span class="admin">
+              <%= link_to "Edit", edit_post_path(post) %>
+              <%= link_to "Delete", post, :method => :delete, data: { confirm: "Are you sure you want to delete #{post.title}?"} %>
+            </span>
+            <% end %>
+            <% end %>
+        </div>
+
+    </li>
+
+    <% end %>
+
+</ul>
