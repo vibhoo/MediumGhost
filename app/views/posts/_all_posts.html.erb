@@ -7,9 +7,7 @@
 
         <div class="item">
 
-            <%= link_to post.user.username do %>
-            <%= image_tag post.user.avatar.url(:thumb), size: "55x55", class: "avatar img-circle has-tooltip", data:{placement: "right"}, title: post.user.first_name %>
-            <% end %>
+            <%= image_tag post.user.avatar.url(:thumb), size: "60x60", class: "avatar img-circle has-tooltip", data:{placement: "right"}, title: post.user.first_name %>
 
             <h2><%= link_to post.title, post %></h2>
 
@@ -20,7 +18,7 @@
         </div>
 
         <div class="meta">
-            <%= link_to time_ago_in_words(post.created_at).capitalize + " back", post %>
+            <%= link_to time_ago_in_words(post.created_at).capitalize + " ago", post %>
 
             <% if user_signed_in? %>
             <% if current_user.id == post.user.id %>

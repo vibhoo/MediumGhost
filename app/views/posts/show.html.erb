@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
+
+  <%= image_tag @post.avatar.url(:medium), class: "blog_image" %>
   <div class="col-md-8 col-md-offset-2">
+
 
     <ul class="bloco-posts">
 
@@ -9,11 +12,13 @@
 
         <div class="item">
 
-          <%= link_to @post.user.username do %>
-              <%= image_tag @post.user.avatar.url(:thumb), size: "55x55", class: "avatar img-circle has-tooltip", data:{placement: "right"}, title: @post.user.first_name %>
-          <% end %>
 
-          <h2><%= link_to @post.title, @post %></h2> <div class="resmo"><%= raw @post.location %></div>
+
+          <h2><%= link_to @post.title, @post %></h2>
+
+          <div class="resmo">
+            <%= raw @post.location %>
+          </div>
 
           <div class="resumo">
             <%= raw @post.content %>
@@ -26,8 +31,9 @@
         </div>
 
 
+
         <div class="meta">
-          <%= link_to time_ago_in_words(@post.created_at).capitalize + " back", @post %>
+          <%= link_to time_ago_in_words(@post.created_at).capitalize + "ago", @post %>
 
           <% if user_signed_in? %>
               <% if current_user.id == @post.user.id %>
@@ -39,7 +45,11 @@
           <% end %>
         </div>
 
-
+        <hr>
+        <%= image_tag @post.user.avatar.url(:thumb), size: "60x60", class: "avatar img-circle has-tooltip", data:{placement: "top"}, title: @post.user.first_name %>
+        <div class="pull-right">
+            <%= @post.user.bio%>
+        </div>
       </li>
 
     </ul>
