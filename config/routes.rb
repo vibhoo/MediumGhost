@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :users
 
   root to: 'posts#index', as: :home
-   get '/id', to: 'profiles#show'
+   get '/:id', to: 'profiles#show'
 end
