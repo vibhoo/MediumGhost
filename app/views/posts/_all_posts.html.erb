@@ -2,6 +2,7 @@
 <ul class="bloco-posts">
 
     <% @posts.reverse_each do |post|  %>
+      <% if post.drafts ==  false %>
 
     <li class="post">
 
@@ -35,5 +36,5 @@
     </li>
 
     <% end %>
-
+<% end %>
 </ul>

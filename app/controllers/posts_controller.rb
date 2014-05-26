@@ -21,7 +21,13 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    if @post.save
+    if params[:draft_button]
+      @post.drafts = true
+      @post.save
+
+    elsif params[:commit]
+      @post.drafts = false
+    @post.save
       redirect_to @post, notice: 'Post was successfully created'
     else
       render action: 'new'
@@ -29,6 +35,9 @@ class PostsController < ApplicationController
   end
 
   def update
+    if @post.drafts == true
+      @post.drafts = false
+    end
     if @post.update(post_params)
       redirect_to @post, notice: 'Post was Successfully Updated'
     else

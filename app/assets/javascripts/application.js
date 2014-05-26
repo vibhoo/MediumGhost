@@ -16,4 +16,5 @@
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR
 //= require turbolinks
+//= require sisyphus
 //= require_tree .
