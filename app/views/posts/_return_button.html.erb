@@ -1,8 +1,31 @@
+<%= stylesheet_link_tag "demo" %>
+<%= stylesheet_link_tag "component" %>
 
-<%= link_to home_path do  %>
+<div id="st-container" class="st-container">
+  <div class="st-pusher">
 
-    <button type="button" class="return-bar has-tooltip" title="return" data-placement="right">
-      <span class="glyphicon glyphicon-arrow-left"></span>
-    </button>
+    <nav class="st-menu st-effect-3" id="menu-3">
+      <h2 class="icon icon-lab">Sidebar</h2>
+      <ul>
+        <li><a class="glyphicon glyphicon-home" href="<%= home_path %>"> Home</a></li>
+        <li><a class="glyphicon glyphicon-book" href="<%= new_post_path %>"> Create New Post </a></li>
+        <% if user_signed_in?  %>
+            <li><a class="glyphicon glyphicon-cog" href="<%=edit_user_registration_path %>"> Edit Profile</a></li>
+        <li><a class="glyphicon glyphicon-log-out" href="<%= signout_path %>"> SignOut</a></li>
+            <% else %>
+            <li><a class="glyphicon glyphicon-log-in " href="<%= signin_path %>"> Signin</a></li>
+                <% end %>
 
-<% end  %>
+            <li><a class="icon icon-wallet" href="#">Credits</a></li>
+      </ul>
+    </nav>
+    <div class="main">
+      <div id="st-trigger-effects" class="column">
+        <button data-effect="st-effect-3">Menu</button>
+      </div>
+    </div>
+
+<!-- div is closed where this file is rendered -->
+
+    <%= javascript_include_tag "sidebarEffects"%>
+    <%= javascript_include_tag "classie"%>

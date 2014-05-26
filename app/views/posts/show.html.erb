@@ -1,65 +1,56 @@
-<p id="notice"><%= notice %></p>
-
-<div class="row">
-
-  <%= image_tag @post.avatar.url(:original), class: "blog_image" %>
-  <div class="col-md-8 col-md-offset-2">
+<%= render 'return_button' %>
 
 
-    <ul class="bloco-posts">
+    <div class="row">
 
-      <li class="post">
+      <%= image_tag @post.avatar.url(:original), class: "blog_image" %>
+      <div class="col-md-8 col-md-offset-2">
 
-        <div class="item">
+        <ul class="bloco-posts">
+          <li class="post">
+            <div class="item">
 
+              <h2><%= @post.title %></h2>
 
+              <div class="resmo">
+                <%= raw @post.location %>
+              </div>
 
-          <h2><%= link_to @post.title, @post %></h2>
+              <div class="resumo">
+                <%= raw @post.content %>
+              </div>
+                <br> <br>
+              <div class="resmo">
+                <%= raw @post.tags %>
+              </div>
 
-          <div class="resmo">
-            <%= raw @post.location %>
-          </div>
+            </div>
 
-          <div class="resumo">
-            <%= raw @post.content %>
-          </div>
+            <div class="meta">
+              <%= link_to time_ago_in_words(@post.created_at).capitalize + " ago", @post %>
 
-          <div class="resmo">
-            <%= raw @post.tags %>
-          </div>
-
-        </div>
-
-
-
-        <div class="meta">
-          <%= link_to time_ago_in_words(@post.created_at).capitalize + "ago", @post %>
-
-          <% if user_signed_in? %>
-              <% if current_user.id == @post.user.id %>
+              <% if user_signed_in? %>
+                  <% if current_user.id == @post.user.id %>
 	            <span class="admin">
 	              <%= link_to "Edit", edit_post_path(@post) %>
                   <%= link_to "delete", @post, :method => :delete, data: { confirm: "Are you sure you want to delete #{@post.title}?"} %>
 	            </span>
+                  <% end %>
               <% end %>
-          <% end %>
-        </div>
+            </div>
+                <br>
+            <hr>
+            <%= image_tag @post.user.avatar.url(:thumb), size: "60x60", class: "avatar img-circle has-tooltip", data:{placement: "top"}, title: @post.user.first_name %>
+            <div class="pull-right">
+              <%= @post.user.bio%>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-        <hr>
-        <%= image_tag @post.user.avatar.url(:thumb), size: "60x60", class: "avatar img-circle has-tooltip", data:{placement: "top"}, title: @post.user.first_name %>
-        <div class="pull-right">
-            <%= @post.user.bio%>
-        </div>
-      </li>
-
-    </ul>
-
-
-
-  </div>
-</div>
-
-
-<%= render 'return_button' %>
+<!-- /main -->
+  </div><!-- /st-pusher -->
+</div><!-- /st-container -->
 
 

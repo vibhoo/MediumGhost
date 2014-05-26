@@ -31,18 +31,15 @@
           <li><%= link_to current_user.first_name, edit_user_registration_path %></li>
           <li><%= link_to "SignOut",  signout_path %></li>
       <% else %>
-          <!-- <li><%= link_to "Register", register_path %></li> Descomente para habilitar-->
+           <li><%= link_to "Register", register_path %></li>
           <li><%= link_to "SignIn", signin_path %></li>
       <% end %>
     </ul>
 
   </div>
 </nav>
-
-<div class="container">
-
+<div class="row">
   <%= yield %>
-
 </div>
 
 
