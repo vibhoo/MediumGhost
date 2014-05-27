@@ -1,6 +1,9 @@
 <%= stylesheet_link_tag "demo" %>
 <%= stylesheet_link_tag "component" %>
 
+<%= javascript_include_tag "sidebarEffects"%>
+<%= javascript_include_tag "classie"%>
+
 
 <div id="st-container" class="st-container">
   <div class="st-pusher">
@@ -12,7 +15,7 @@
         <li><a class="glyphicon glyphicon-book" href="<%= new_post_path %>"> Create New Post </a></li>
         <% if user_signed_in?  %>
             <li><a class="glyphicon glyphicon-cog" href="<%=edit_user_registration_path %>"> Edit Profile</a></li>
-            <li><a class="glyphicon glyphicon-bookmark" href="<%=post.user.username  %>"> Drafts(s)</a></li>
+            <li><a class="glyphicon glyphicon-bookmark" href="<%=current_user.username %>"> Drafts(s)</a></li>
         <li><a class="glyphicon glyphicon-log-out" href="<%= signout_path %>"> SignOut</a></li>
             <% else %>
             <li><a class="glyphicon glyphicon-log-in " href="<%= signin_path %>"> Signin</a></li>
@@ -29,6 +32,3 @@
 
 
 <!-- div is closed where this file is rendered -->
-
-    <%= javascript_include_tag "sidebarEffects"%>
-    <%= javascript_include_tag "classie"%>
