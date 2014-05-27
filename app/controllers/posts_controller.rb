@@ -24,10 +24,10 @@ class PostsController < ApplicationController
     if params[:draft_button]
       @post.drafts = true
       @post.save
-
+        redirect_to @post, notice: 'post saved as drafts'
     elsif params[:commit]
       @post.drafts = false
-    @post.save
+      @post.save
       redirect_to @post, notice: 'Post was successfully created'
     else
       render action: 'new'

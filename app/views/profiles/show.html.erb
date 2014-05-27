@@ -56,7 +56,7 @@
             </div>
 
             <div class="meta">
-              <%= link_to time_ago_in_words(post.created_at).capitalize + " back", post %>
+              <%= link_to time_ago_in_words(post.created_at).capitalize + " ago", post %>
 
               <% if user_signed_in? %>
                   <% if current_user.id == post.user.id %>
@@ -83,20 +83,14 @@
           <% if post.drafts ==  true && current_user.id == post.user.id%>
               <hr> Draft(s) <hr>
           <li class="post">
-
             <div class="item">
-
               <h2><%= link_to post.title, post %></h2>
-
               <div class="resumo">
                 <%= raw post.content[0..340]%> ...
               </div>
-
             </div>
-
             <div class="meta">
-              <%= link_to time_ago_in_words(post.created_at).capitalize + " back", post %>
-
+              <%= link_to time_ago_in_words(post.created_at).capitalize + " ago", post %>
               <% if user_signed_in? %>
                   <% if current_user.id == post.user.id %>
 		            <span class="admin">
