@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  get "profiles/show"
+ get 'tags/:tag', to: 'posts#index', as: :tag
   devise_for :users
   devise_scope :user do
     get 'register', to: 'devise/registrations#new', as: :register

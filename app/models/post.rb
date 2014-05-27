@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
 
   validates :title, presence: true
+  acts_as_taggable
 
   extend FriendlyId
   friendly_id :title, use: :slugged
