@@ -13,24 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140526160709) do
 
-  create_table "drafts", force: true do |t|
-    t.string   "item_type",      null: false
-    t.integer  "item_id",        null: false
-    t.string   "event",          null: false
-    t.string   "whodunnit"
-    t.text     "object"
-    t.text     "previous_draft"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "drafts", ["created_at"], name: "index_drafts_on_created_at"
-  add_index "drafts", ["event"], name: "index_drafts_on_event"
-  add_index "drafts", ["item_id"], name: "index_drafts_on_item_id"
-  add_index "drafts", ["item_type"], name: "index_drafts_on_item_type"
-  add_index "drafts", ["updated_at"], name: "index_drafts_on_updated_at"
-  add_index "drafts", ["whodunnit"], name: "index_drafts_on_whodunnit"
-
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
@@ -57,8 +39,6 @@ ActiveRecord::Schema.define(version: 20140526160709) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.integer  "draft_id"
-    t.datetime "published_at"
     t.boolean  "drafts"
   end
 
