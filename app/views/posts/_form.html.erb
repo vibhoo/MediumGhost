@@ -25,15 +25,15 @@
         </div>
 
         <div class="form-group">
-          <%= f.input :title, placeholder: "Title", input_html: {class:"form-control"} %>
+          <%= f.input :title, placeholder: "Title", input_html: {class:"form-control", autocomplete: "off"} %>
+        </div>
+
+        <div class="form-group" id="bloodhound">
+          <%= f.input :location, placeholder: "Location", input_html: {class:"form-control typeahead", :size=> "35"}, autocomplete: "off" %>
         </div>
 
         <div class="form-group">
-          <%= f.input :location, placeholder: "Location", input_html: {class:"form-control"} %>
-        </div>
-
-        <div class="form-group">
-          <%= f.input :tags, placeholder: "tags", input_html: {class:"form-control"} %>
+          <%= f.input :tags, placeholder: "Tags", input_html: {class:"form-control", autocomplete: "off"} %>
         </div>
 
         <div class="form-group">
@@ -48,6 +48,51 @@
 
     <% end %>
 
+<script type="text/javascript">
+    $(document).ready(function(){
+  
+    var loc = ['Out Of The Blue, Khar (W)', 'Sammy Sosa, Oshiwara', '5 Spice, Bandra (W)', 'The Pizzeria, Marine Drive',
+        'Barbeque Nation, Khar (W)','Indigo Cafe, Lokhandwala','Masala Mantar, 4 Bungalows',
+        'Global Fusion, Linking Road', 'Aromas of China, Andheri (W)',
+        'Cafe Mangii, Khar (W)', 'Kailash Parbat, Andheri (W)', 'Oven Fresh, Shivaji Park',
+        'Bembos, Bandra (W)','Angeethi, Vile Parle (W)', 'Mainland China, Andheri (W)',
+        'Bagdadi Restaurant, Colaba', 'Moshe, Cuffe Parade', 'Golden Star Thali, Charni Road',
+        'Sheesha Sky Lounge, Andheri West', 'PizzaExpress, Andheri West', 'Almond Flower, Andheri West',
+        'China 1, Link Road-Andheri(w)', 'Joey Pizza, Andheri West', 'La Patio, Andheri West', 'Some Like It Hot, 4 Bungalows',
+        'Barbeque Nation, Andheri West','Banana Leaf, Versova', 'Jugheads -The Unrestaurant, Andheri West',
+        'Woodside All Day Bar And Eatery, Andheri West', 'Alfredos, Link Road-Andheri(w)',
+        'Trikaya, 7 Bungalows', 'Oh! Calcutta, Lokhandwala (Andheri)',
+        'DimSum & more, 7 Bungalows', 'Pebbles - Sea Food Restaurant, Andheri West',
+        'Firangi Paani, Andheri West', 'Guru Da Dhaba, Lokhandwala (Andheri)', 'Urban Tadka, 7 Bungalows',
+        'Legacy Of China, 7 Bungalows', 'Pizzaroma, Andheri West', 'Miro Restaurant, Svenska Design..., Lokhandwala ',
+        'Malwani Kkalwan, 7 Bungalows', 'Dales Eden, Lokhandwala (Andheri)',
+        'Pop Tates, 7 Bungalows', 'Quesso Ristorante, Andheri West', 'Northern Tadka, Link Road-Andheri(w)',
+        'Red Box Cafe, Andheri West', 'Peppr Pinch, 7 Bungalows', 'Goa Portuguesa, 4 Bungalows',
+        'Mumbai Tawa, DN Nagar', 'Enigma - The Lounge, 7 Bungalows', 'Fingers Cross - The All Day, Lokhandwala ',
+        'Debonairs Pizza, Andheri West', 'The Chocolate Room, Andheri West'
+    ];
+    var loc = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        // `loc` is an array of state names defined in "The Basics"
+        local: $.map(loc, function(state) { return { value: state }; })
+    });
+
+    // kicks off the loading/processing of `local` and `prefetch`
+   loc.initialize();
+
+    $('#bloodhound .typeahead').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1
+            },
+            {
+                name: 'loc',
+                displayKey: 'value',
+                source: loc.ttAdapter()
+            });
+    });
+</script>
 
   </div>
 </div>

@@ -17,4 +17,6 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR
 //= require turbolinks
 //= require sisyphus
+//= require typeahead.jquery
+//= require bloodhound
 //= require_tree .
