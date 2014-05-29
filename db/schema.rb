@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527173132) do
+ActiveRecord::Schema.define(version: 20140528112823) do
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -40,10 +40,31 @@ ActiveRecord::Schema.define(version: 20140527173132) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "drafts"
+    t.integer  "rating"
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "seems_rateable_cached_ratings", force: true do |t|
+    t.integer  "cacheable_id",   limit: 8
+    t.string   "cacheable_type"
+    t.float    "avg",                      null: false
+    t.integer  "cnt",                      null: false
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "seems_rateable_rates", force: true do |t|
+    t.integer  "rater_id",      limit: 8
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.float    "stars",                   null: false
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

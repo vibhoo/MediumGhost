@@ -25,9 +25,28 @@
               <div class="resumo">
                 <%= raw @post.content %>
               </div>
-                <br> <br>
+                <br>
               <div class="resmo">
                 <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+              </div>
+
+              <div class="resumo">
+                Rating <%= @post.rating %>
+
+                <% if @post.rating > 0 %>
+                    <p>
+                      Rating:
+                      <% num_stars(@post.rating)[:full].times do %>
+                          <i class="glyphicon glyphicon-star"></i>
+                      <% end %>
+                      <% num_stars(@post.rating)[:half].times do %>
+                          <i class="glyphicon glyphicon-heart"></i>
+                      <% end %>
+                      <% num_stars(@post.rating)[:empty].times do %>
+                          <i class="glyphicon glyphicon-star-empty"></i>
+                      <% end %>
+                    </p>
+                <% end %>
               </div>
 
             </div>

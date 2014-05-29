@@ -41,6 +41,18 @@
         </div>
 
         <div class="form-group">
+          <fieldset class="rating">
+            <legend>Please rate:</legend>
+            <%= f.radio_button(:rating, "5", class: "form-control") %><%= f.label(:rating.to_s + "_5", "Rocks") %>
+            <%= f.radio_button(:rating, "4", class: "form-control") %><%= f.label(:rating.to_s + "_4", "Pretty good") %>
+            <%= f.radio_button(:rating, "3", class: "form-control") %><%= f.label(:rating.to_s + "_3", "Meh") %>
+            <%= f.radio_button(:rating, "2", class: "form-control") %><%= f.label(:rating.to_s + "_2", "Kinda bad") %>
+            <%= f.radio_button(:rating, "1", class: "form-control") %><%= f.label(:rating.to_s + "_1", "Sucks big time") %>
+          </fieldset>
+        </div>
+        <br />
+
+        <div class="form-group">
           <%= f.submit "Create post", class: "btn btn-lg pull-right" %>
           <%= f.submit "Save as Draft(s)", class:"btn pull-left",name: "draft_button" %>
         </div>
