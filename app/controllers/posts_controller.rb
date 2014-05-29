@@ -40,11 +40,13 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.drafts == true
+    if params[:draft_button]
+      @post.drafts = true
+      @post.update(post_params)
+      redirect_to @post, notice: 'Post published publicly'
+    elsif params[:commit]
       @post.drafts = false
       @post.update(post_params)
-      redirect_to @post, notice: 'Post published publically'
-    elsif @post.update(post_params)
       redirect_to @post, notice: 'Post was Successfully Updated'
     else
       render action: 'edit'
