@@ -227,6 +227,7 @@ h2{
   -ms-transition: top .3s ease,opacity .3s ease;
   transition: top .3s ease,opacity .3s ease;
 }
+
  }
 #bloodhound {
   color: Black;
@@ -288,4 +289,12 @@ h2{
   position:relative;
   top:2px;
   left:2px;
+}
+
+#tag_cloud {
+  width: 400px;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
 }
