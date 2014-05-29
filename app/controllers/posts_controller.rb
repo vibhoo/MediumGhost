@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     if params[:draft_button]
       @post.drafts = true
       @post.save
-        redirect_to @post, notice: 'post saved as drafts'
+        redirect_to @post, notice: 'Post saved as drafts'
     elsif params[:commit]
       @post.drafts = false
       @post.save
@@ -43,11 +43,11 @@ class PostsController < ApplicationController
     if params[:draft_button]
       @post.drafts = true
       @post.update(post_params)
-      redirect_to @post, notice: 'Post published publicly'
+      redirect_to @post, notice: 'saved'
     elsif params[:commit]
       @post.drafts = false
       @post.update(post_params)
-      redirect_to @post, notice: 'Post was Successfully Updated'
+      redirect_to @post, notice: 'Published'
     else
       render action: 'edit'
     end
