@@ -8,12 +8,6 @@
         <ul class="bloco-posts">
           <li class="post">
 
-            <div id="tag_cloud">
-              <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class|%>
-                  <%= link_to tag.name, tag_path(tag.name), class:css_class %>
-              <% end %>
-            </div>
-
             <div class="item">
 
               <h2><%= @post.title %></h2>
@@ -31,11 +25,9 @@
               </div>
 
               <div class="resumo">
-                Rating <%= @post.rating %>
-
                 <% if @post.rating > 0 %>
                     <p>
-                      Rating:
+
                       <% num_stars(@post.rating)[:full].times do %>
                           <i class="glyphicon glyphicon-star"></i>
                       <% end %>
