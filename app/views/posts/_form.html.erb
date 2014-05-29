@@ -1,6 +1,6 @@
 
 <div class="row centralize">
-  <div class="col-lg-6 col-lg-offset-2 floating-label-form-group ">
+  <div class="col-lg-6 col-lg-offset-2 ">
     <script>$(document).ready(function() {$('#sampleform').sisyphus();});
     console.log('saving');
     </script>
@@ -24,25 +24,24 @@
         <%= f.input :avatar, as: :file, placeholder: "Image", input_html: {class: "form-control"} %>
         </div>
 
-        <div class="form-group">
+        <div class="floating-label-form-group ">
           <%= f.input :title, placeholder: "Title", input_html: {class:"form-control", autocomplete: "off"} %>
         </div>
 
-        <div class="form-group" id="bloodhound">
+        <div class="floating-label-form-group " id="bloodhound">
           <%= f.input :location, placeholder: "Location we try to guess", input_html: {class:"form-control typeahead", :size=> "35", autocomplete: "off" }%>
         </div>
 
-        <div class="form-group">
+        <div class="floating-label-form-group ">
           <%= f.input :tag_list, placeholder: "Tags Seperated by Commas", input_html: {class:"form-control", autocomplete: "off"} %>
         </div>
 
-        <div class="form-group">
+        <div class="floating-label-form-group  label">
           <%= f.input :content, as: :text, placeholder: "Start Writing", input_html: {id: "wysihtml5-textarea", class:"form-control", rows:5} %>
         </div>
 
         <div class="form-group">
           <fieldset class="rating">
-            <legend>Please rate:</legend>
             <%= f.radio_button(:rating, "5", class: "form-control") %><%= f.label(:rating.to_s + "_5", "Rocks") %>
             <%= f.radio_button(:rating, "4", class: "form-control") %><%= f.label(:rating.to_s + "_4", "Pretty good") %>
             <%= f.radio_button(:rating, "3", class: "form-control") %><%= f.label(:rating.to_s + "_3", "Meh") %>

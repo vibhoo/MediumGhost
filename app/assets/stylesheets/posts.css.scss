@@ -216,24 +216,18 @@ h2{
   background: 0 0;
   box-shadow: none!important;
   resize: none;
+
 }
-/*
-.floating-label-form-group label {
-  display: block;
-  z-index: 0;
-  position: relative;
-  top: 2em;
-  margin: 0;
-  font-size: .85em;
-  line-height: 1.764705882em;
-  vertical-align: middle;
-  vertical-align: baseline;
-  opacity: 0;
+ .floating-label-form-group {
+
+    label{
+   opacity: 0;
   -webkit-transition: top .3s ease,opacity .3s ease;
   -moz-transition: top .3s ease,opacity .3s ease;
   -ms-transition: top .3s ease,opacity .3s ease;
   transition: top .3s ease,opacity .3s ease;
-}*/
+}
+ }
 #bloodhound {
   color: Black;
 }
