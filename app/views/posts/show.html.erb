@@ -25,7 +25,7 @@
               </div>
 
               <div class="resumo">
-                <% if @post.rating > 0 %>
+                <% if @post.rating%>
                     <p>
 
                       <% num_stars(@post.rating)[:full].times do %>
